@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeKah</title>
+  <link rel="stylesheet" href="lp.css">
+</head>
+<body>
+  <header>
+    <div class="nav-left">
+      <div class="menu-btn" onclick="openMenu()">&#9776;</div>
+      <h1>TeKah</h1>
+    </div>
+    <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="mycourse.html">My Courses</a>
+    </div>
+    <nav>
+      <a href="#">Page</a>
+      <a href="#">Page</a>
+      <a href="#">Page</a>
+      <button class="login-btn">Button</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Selamat datang, Pengguna</h2>
+      <p>Semoga kamu login demi belajar dan mengerjakan tugas</p>
+    </section>
+
+    <section class="task-calendar">
+      <div class="tasks">
+        <h3>List Tugas</h3>
+        <ul>
+          <li>
+            <strong>Matematika Dasar</strong><br>
+            Menghitung rasio dari deret dengan menggunakan fungsi referensi
+          </li>
+          <li>
+            <strong>Pengantar Teknologi Informasi</strong><br>
+            Menyusun abstrak poster dengan tema yang sudah ditentukan
+          </li>
+          <li>
+            <strong>Dasar Listrik Dan Elektronika</strong><br>
+            Kelompok Laporkan Praktikum pada pertemuan kemarin
+          </li>
+        </ul>
+      </div>
+
+      <div class="calendar">
+        <h3>Kalender Akademik Untuk Bulan Ini</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Senin</th><th>Selasa</th><th>Rabu</th>
+              <th>Kamis</th><th>Jumat</th><th>Sabtu</th><th>Minggu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+            <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+            <tr><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+            <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+            <tr><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="classes">
+      <h3>Kelas</h3>
+      <div class="class-grid">
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?food" alt="food">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?drink" alt="drink">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?coffee" alt="coffee">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?dessert" alt="dessert">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?fruit" alt="fruit">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/300x200/?bread" alt="bread">
+          <h4>Subheading</h4>
+          <p>Body text for whatever you'd like to expand on the subheading.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+   <script>
+    function openMenu() {
+      document.getElementById("sidebar").style.left = "0";
+    }
+
+    function closeMenu() {
+      document.getElementById("sidebar").style.left = "-250px";
+    }
+  </script>
+
+  <footer>
+    <p>Site name</p>
+    <div>
+      <a href="#">Feature</a>
+      <a href="#">Page</a>
+      <a href="#">Page</a>
+      <a href="#">Page</a>
+    </div>
+  </footer>
+</body>
+</html>
