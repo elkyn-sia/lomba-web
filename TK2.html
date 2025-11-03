@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelas 1 - TeKah</title>
+
+    <style>
+        /* RESET DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* KONTEN UTAMA */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.kelas h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.materi-section h3 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.materi-section ul {
+    margin-left: 1.2rem;
+    list-style-type: disc;
+}
+
+/* FORM INPUT */
+.sub-section {
+    margin-top: 2rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form-input label {
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.form-input input {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+}
+
+/* KELAS LAINNYA */
+.kelas-lainnya {
+    margin-top: 3rem;
+}
+
+.kelas-lainnya h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.kelas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card h4 {
+    margin: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin: 0 0.5rem 0.8rem;
+    color: #777;
+    font-size: 0.9rem;
+}
+    </style>
+    
+    <link rel="stylesheet" href="TK2.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="menu-icon">☰</div>
+        <h1 class="logo">TeKah</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="kelas">
+            <h2>Kelas 1</h2>
+            <p class="desc">
+                Body text for your whole article or post. We'll put some lorem ipsum to show how a long text might
+                appear here.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula, felis id luctus ultrices, justo
+                nisl malesuada purus, sed convallis nunc urna eget orci.
+            </p>
+            <br>
+            <div class="materi-section">
+                <h3>Presensi</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, magnam. Nam qui sapiente ut illo illum, unde aliquam non dicta accusamus doloremque quos, tempora delectus ratione voluptas pariatur officia temporibus.
+                </p>
+                <br>
+                <h3>Rencana Pembelajaran Semester</h3>
+                <p>Menentukan aktivitas sesuai dengan tema yang sudah ditentukan</p>
+            </div>
+
+            <div class="sub-section">
+                <h2>SUB CPMK (n-n)</h2>
+                <p>(Deskripsi tujuan pembelajaran)</p>
+
+                <form class="form-input">
+                    <label>Materi :</label>
+                    <input type="text" placeholder="Materi 1" />
+
+                    <label>Tugas :</label>
+                    <input type="text" placeholder="Materi 2" />
+                </form>
+            </div>
+        </section>
+
+        <!-- Section: Kelas Lainnya -->
+        <section class="kelas-lainnya">
+            <h3>Kelas lainnya</h3>
+            <div class="kelas-grid">
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Kelas 2" />
+                    <h4>Kelas 2</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Kelas 3" />
+                    <h4>Kelas 3</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Kelas 4" />
+                    <h4>Kelas 4</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
