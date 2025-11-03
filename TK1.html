@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelas 1 - TeKah</title>
+
+    <style>
+/* RESET DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Sidebar */
+  .sidebar {
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    padding-top: 20px;
+    z-index: 1000;
+    /* Menambahkan ini agar padding tidak mengubah lebar */
+    box-sizing: border-box; 
+  }
+
+  /* Ini adalah aturan .sidebar a yang BENAR */
+  .sidebar a {
+    display: block;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+  }
+
+  .sidebar a:hover {
+    background-color: #f0f0f0;
+  }
+
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    z-index: 500;
+  }
+
+  /* Aturan .sidebar a yang duplikat telah DIHAPUS dari sini */
+
+  .closebtn {
+    font-size: 25px;
+    display: block;
+    text-align: right;
+    padding: 10px 15px; /* Disesuaikan agar rata */
+    cursor: pointer;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .navbar-left {
+      display: flex;
+      align-items: center;
+  }
+
+  .navbar-left .menu-btn {
+      margin-right: 15px; 
+  }
+
+  .menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+
+/* KONTEN UTAMA */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.kelas h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.materi-section h3 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.materi-section ul {
+    margin-left: 1.2rem;
+    list-style-type: disc;
+}
+
+/* FORM INPUT */
+.sub-section {
+    margin-top: 2rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form-input label {
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.form-input input {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+}
+
+/* KELAS LAINNYA */
+.kelas-lainnya {
+    margin-top: 3rem;
+}
+
+.kelas-lainnya h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.kelas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card h4 {
+    margin: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin: 0 0.5rem 0.8rem;
+    color: #777;
+    font-size: 0.9rem;
+}
+    /* Footer */
+  .footer {
+            border-top: 1px solid #ddd;
+            padding: 2rem 1rem;
+            background-color: #fafafa;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-left h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .social-icons a img {
+            width: 20px;
+            margin-right: 10px;
+            opacity: 0.8;
+        }
+
+        .social-icons a img:hover {
+            opacity: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links div h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #444;
+            text-decoration: none;
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    
+    <link rel="stylesheet" href="TK2.css" />
+</head>
+
+<body>
+    <div id="overlay" onclick="closeSidebar()"></div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+    <a href="lp.html">Dashboard</a>
+    <a href="mycourse.html">My Courses</a>
+  </div>
+  
+  <header class="navbar">
+    <div class="navbar-left">
+        <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
+        <h1 class="logo">TeKah</h1>
+    </div>
+    
+  </header>
+
+<script>
+  function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    var style = window.getComputedStyle(sidebar); 
+
+    if (style.left === "0px") {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
+
+  function openSidebar() {
+    document.getElementById("sidebar").style.left = "0";
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebar").style.left = "-250px"; 
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+    <!-- Main Content -->
+    <main class="container">
+        <section class="kelas">
+            <h2>Kelas 1</h2>
+            <p class="desc">
+                Body text for your whole article or post. We'll put some lorem ipsum to show how a long text might
+                appear here.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula, felis id luctus ultrices, justo
+                nisl malesuada purus, sed convallis nunc urna eget orci.
+            </p>
+            <br>
+            <div class="materi-section">
+                <h3>Presensi</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, magnam. Nam qui sapiente ut illo illum, unde aliquam non dicta accusamus doloremque quos, tempora delectus ratione voluptas pariatur officia temporibus.
+                </p>
+                <br>
+                <h3>Rencana Pembelajaran Semester</h3>
+                <p>Menentukan aktivitas sesuai dengan tema yang sudah ditentukan</p>
+            </div>
+
+            <div class="sub-section">
+                <h2>SUB CPMK (n-n)</h2>
+                <p>(Deskripsi tujuan pembelajaran)</p>
+
+                <form class="form-input">
+                    <label>Materi :</label>
+                    <input type="text" placeholder="Materi 1" />
+
+                    <label>Tugas :</label>
+                    <input type="text" placeholder="Materi 2" />
+                </form>
+            </div>
+        </section>
+
+        <!-- Section: Kelas Lainnya -->
+        <section class="kelas-lainnya">
+            <h3>Kelas lainnya</h3>
+            <div class="kelas-grid">
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=1" alt="Kelas 2" />
+                    <h4>Kelas 2</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=2" alt="Kelas 3" />
+                    <h4>Kelas 3</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/300/200?random=3" alt="Kelas 4" />
+                    <h4>Kelas 4</h4>
+                    <p>Lihat selengkapnya</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>TeKah Page</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="fb"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"
+                            alt="ig"></a>
+                    <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="yt"></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Contact Person</h4>
+                    <a href="#">+62 812-3212-1233</a>
+                </div>
+            </div>
+    </footer>
+
+</body>
+
+</html>
