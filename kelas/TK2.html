@@ -19,26 +19,31 @@
         
         <a href="../lp.html">Dashboard</a>
         <a href="../mycourse.html">My Courses</a>
-        <a href="TK1.html">Kelas 1</a>
-        <a href="TK2.html">Kelas 2</a>
-        <a href="TK3.html">Kelas 3</a>
-        <a href="TK4.html">Kelas 4</a>
     </div>
 
     
     <header class="navbar">
-        <div class="nav-left">
             <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
             <h1 class="logo">TeKah</h1>
         </div>
-        <a href="../ep.html" class="nav-profile">
-            <img src="https://picsum.photos/40/40" alt="Profile">
-        </a>
+        <div class="profile-container">
+        
+            <div class="profile-area">
+                <span class="user-name">Student</span>
+        
+                <img src="https://i.pravatar.cc/40" alt="Foto Profil" class="profile-picture" id="profilePictureButton">
+            </div>
+        
+            <div class="profile-dropdown" id="profileMenu">
+                <a href="ep.html">Edit Profile</a>
+                <div class="divider"></div>
+                <a href="home.html">Logout</a>
+            </div>
     </header>
 
     <main class="class-container">
         <section class="kelas">
-            <h2>Kelas 1</h2>
+            <h2>Kelas 2</h2>
             <p class="desc">
                 Body text for your whole article or post. We'll put some lorem ipsum to show how a long text might
                 appear here.
