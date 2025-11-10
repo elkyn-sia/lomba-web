@@ -9,200 +9,322 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-/* RESET DASAR */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
+        /* RESET DASAR */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-/* Sidebar */
-  .sidebar {
-    height: 100%;
-    width: 250px;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    left: -250px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-    transition: left 0.3s ease;
-    padding-top: 20px;
-    z-index: 1000;
-    box-sizing: border-box; 
-  }
+        /* 1. STYLING HEADER UTAMA (NAVBAR) 
+    */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
 
-  .sidebar a {
-    display: block;
-    padding: 15px 25px;
-    text-decoration: none;
-    color: #000;
-    font-size: 18px;
-  }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-  .sidebar a:hover {
-    background-color: #f0f0f0;
-  }
+        .menu-icon {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
 
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    display: none;
-    z-index: 500;
-  }
+        .site-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-  .closebtn {
-    font-size: 25px;
-    display: block;
-    text-align: right;
-    padding: 10px 15px;
-    cursor: pointer;
-  }
+        .profile-container {
+            position: relative;
+        }
 
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+        /* * [DIMODIFIKASI] Area profil sekarang tidak lagi memiliki
+     * 'cursor: pointer' karena bukan lagi tombol utama.
+    */
+        .profile-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px;
+            border-radius: 6px;
+        }
 
-  .navbar-left {
-      display: flex;
-      align-items: center;
-  }
+        .user-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
 
-  .navbar-left .menu-btn {
-      margin-right: 15px; 
-  }
+        /* * [DIMODIFIKASI] Gambar profil sekarang menjadi tombolnya.
+    */
+        .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            /* [PINDAH] Cursor pointer sekarang di sini */
+            transition: transform 0.2s ease;
+            /* [BARU] Efek klik kecil */
+        }
 
-  .menu-btn {
-    font-size: 24px;
-    cursor: pointer;
-  }
+        /* [BARU] Efek hover dan klik pada gambar */
+        .profile-picture:hover {
+            opacity: 0.85;
+        }
 
-  .logo {
-    font-size: 20px;
-    margin: 0;
-  }
+        .profile-picture:active {
+            transform: scale(0.95);
+            /* Sedikit mengecil saat diklik */
+        }
 
-  .nav-links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: black;
-  }
+        /* Style Dropdown (Sama seperti sebelumnya) */
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            width: 200px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.2s ease-out,
+                transform 0.2s ease-out,
+                visibility 0.2s ease-out;
+        }
 
-  .btn {
-    background: black;
-    color: white;
-    border: none;
-    padding: 6px 14px;
-    cursor: pointer;
-  }
+        .profile-dropdown.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            visibility: visible;
+            pointer-events: auto;
+        }
 
-/* KONTEN UTAMA */
-.container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
+        .profile-dropdown a {
+            display: block;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            border-radius: 6px;
+        }
 
-.kelas h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
+        .profile-dropdown a:hover {
+            background-color: #f4f4f4;
+        }
 
-.desc {
-    color: #555;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
+        .profile-dropdown .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 6px 0;
+        }
 
-.materi-section h3 {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-}
 
-.materi-section ul {
-    margin-left: 1.2rem;
-    list-style-type: disc;
-}
 
-/* FORM INPUT (Style asli tetap ada, jika ingin dipakai di tempat lain) */
-.sub-section {
-    margin-top: 2rem;
-}
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease;
+            padding-top: 20px;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
 
-.form-input {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-}
+        .sidebar a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+        }
 
-.form-input label {
-    margin-top: 0.5rem;
-    font-weight: 600;
-}
+        .sidebar a:hover {
+            background-color: #f0f0f0;
+        }
 
-.form-input input {
-    padding: 0.7rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-top: 0.3rem;
-}
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 500;
+        }
 
-/* KELAS LAINNYA */
-.kelas-lainnya {
-    margin-top: 3rem;
-}
+        .closebtn {
+            font-size: 25px;
+            display: block;
+            text-align: right;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
 
-.kelas-lainnya h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-}
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.kelas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
 
-.card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-}
+        .navbar-left .menu-btn {
+            margin-right: 15px;
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-}
+        .menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+        }
 
-.card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
+        .logo {
+            font-size: 20px;
+            margin: 0;
+        }
 
-.card h4 {
-    margin: 0.5rem;
-    font-size: 1.1rem;
-}
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
 
-.card p {
-    margin: 0 0.5rem 0.8rem;
-    color: #777;
-    font-size: 0.9rem;
-}
-    /* Footer */
-  .footer {
+        .btn {
+            background: black;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            cursor: pointer;
+        }
+
+        /* KONTEN UTAMA */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .kelas h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .desc {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .materi-section h3 {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .materi-section ul {
+            margin-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        /* FORM INPUT (Style asli tetap ada, jika ingin dipakai di tempat lain) */
+        .sub-section {
+            margin-top: 2rem;
+        }
+
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+        }
+
+        .form-input label {
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input input {
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-top: 0.3rem;
+        }
+
+        /* KELAS LAINNYA */
+        .kelas-lainnya {
+            margin-top: 3rem;
+        }
+
+        .kelas-lainnya h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .kelas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card h4 {
+            margin: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            margin: 0 0.5rem 0.8rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
             border-top: 1px solid #ddd;
             padding: 2rem 1rem;
             background-color: #fafafa;
@@ -252,138 +374,197 @@
             text-decoration: underline;
         }
 
-/* === DITAMBAHKAN: CSS DARI FILE MODUL KURSUS === */
-.module-item {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.icon-section {
-    padding: 10px;
-    border-radius: 4px;
-    margin-right: 15px;
-    font-size: 20px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.icon-section.blue { background-color: #3b82f6; }
-.icon-section.pink { background-color: #ec4899; }
-.content-section {
-    flex-grow: 1;
-}
-.module-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #0d47a1;
-    text-decoration: none;
-}
-.module-title:hover {
-    text-decoration: underline;
-}
-.sub-info {
-    font-size: 14px;
-    color: #555;
-    margin-left: 8px;
-}
-/* DIMODIFIKASI: Mengganti .btn menjadi .module-btn untuk menghindari konflik */
-.module-btn {
-    padding: 8px 15px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-.module-btn.mark {
-    background-color: white;
-    color: #4b5563;
-}
-.module-btn.mark:hover {
-    background-color: #f3f4f6;
-}
-.module-btn.done {
-    background-color: #10b981;
-    color: white;
-    border: 1px solid #10b981;
-}
-.assessment-details {
-    list-style-type: disc;
-    padding-left: 35px;
-    margin-top: 8px;
-    color: #4b5563;
-    font-size: 14px;
-}
-.assessment-content {
-    display: flex;
-    align-items: center;
-}
-@media (max-width: 600px) {
-    .module-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .action-section {
-        margin-top: 10px;
-        align-self: flex-end;
-    }
-}
-/* === AKHIR DARI CSS YANG DITAMBAHKAN === */
+        /* === DITAMBAHKAN: CSS DARI FILE MODUL KURSUS === */
+        .module-item {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
 
+        .icon-section {
+            padding: 10px;
+            border-radius: 4px;
+            margin-right: 15px;
+            font-size: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-section.blue {
+            background-color: #3b82f6;
+        }
+
+        .icon-section.pink {
+            background-color: #ec4899;
+        }
+
+        .content-section {
+            flex-grow: 1;
+        }
+
+        .module-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0d47a1;
+            text-decoration: none;
+        }
+
+        .module-title:hover {
+            text-decoration: underline;
+        }
+
+        .sub-info {
+            font-size: 14px;
+            color: #555;
+            margin-left: 8px;
+        }
+
+        /* DIMODIFIKASI: Mengganti .btn menjadi .module-btn untuk menghindari konflik */
+        .module-btn {
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .module-btn.mark {
+            background-color: white;
+            color: #4b5563;
+        }
+
+        .module-btn.mark:hover {
+            background-color: #f3f4f6;
+        }
+
+        .module-btn.done {
+            background-color: #10b981;
+            color: white;
+            border: 1px solid #10b981;
+        }
+
+        .assessment-details {
+            list-style-type: disc;
+            padding-left: 35px;
+            margin-top: 8px;
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        .assessment-content {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .module-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .action-section {
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+        }
+
+        /* === AKHIR DARI CSS YANG DITAMBAHKAN === */
     </style>
-    
+
     <link rel="stylesheet" href="TK2.css" />
 </head>
 
 <body>
     <div id="overlay" onclick="closeSidebar()"></div>
 
-  <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
-    <a href="lp.html">Dashboard</a>
-    <a href="mycourse.html">My Courses</a>
-  </div>
-  
-  <header class="navbar">
-    <div class="navbar-left">
-        <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
-        <h1 class="logo">TeKah</h1>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+        <a href="/lomba-web/lp.html">Dashboard</a>
+        <a href="/lomba-web/mycourse.html">My Courses</a>
+        <a href="TK1.html">Kelas 1</a>
+        <a href="TK2.html">Kelas 2</a>
+        <a href="TK3.html">Kelas 3</a>
+        <a href="TK4.html">Kelas 4</a>
     </div>
-    
-  </header>
 
-<script>
-  function toggleSidebar() {
-    var sidebar = document.getElementById("sidebar");
-    var style = window.getComputedStyle(sidebar); 
 
-    if (style.left === "0px") {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  }
+    <header class="navbar">
+        <div class="navbar-left">
+            <div class="menu-btn" onclick="toggleSidebar()">&#9776;</div>
+            <h1 class="logo">TeKah</h1>
+        </div>
 
-  function openSidebar() {
-    document.getElementById("sidebar").style.left = "0";
-    document.getElementById("overlay").style.display = "block";
-  }
+        <div class="profile-container">
 
-  function closeSidebar() {
-    document.getElementById("sidebar").style.left = "-250px"; 
-    document.getElementById("overlay").style.display = "none";
-  }
-</script>
+            <div class="profile-area">
+                <span class="user-name">Nama Anda</span>
 
-        <main class="container">
+                <img src="https://i.pravatar.cc/40" alt="Foto Profil" class="profile-picture" id="profilePictureButton">
+            </div>
+
+            <div class="profile-dropdown" id="profileMenu">
+                <a href="#">Edit Profile</a>
+                <div class="divider"></div>
+                <a href="#">Logout</a>
+            </div>
+
+    </header>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var style = window.getComputedStyle(sidebar);
+
+            if (style.left === "0px") {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.left = "0";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.left = "-250px";
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // 1. [DIMODIFIKASI] Pilih elemen yang kita butuhkan
+        // Kita sekarang memilih gambar, BUKAN lagi div .profile-area
+        const profileButton = document.getElementById('profilePictureButton');
+        const profileMenu = document.getElementById('profileMenu');
+
+        // 2. [DIMODIFIKASI] Tambahkan event 'click' ke tombol GAMBAR
+        profileButton.addEventListener('click', function (event) {
+            profileMenu.classList.toggle('show');
+            event.stopPropagation();
+        });
+
+        // 3. (Sama) Menutup dropdown jika klik di luar area menu
+        window.addEventListener('click', function (event) {
+            if (profileMenu.classList.contains('show')) {
+                // Cek apakah klik BUKAN di dalam menu DAN BUKAN di tombol gambar
+                if (!profileMenu.contains(event.target) && !profileButton.contains(event.target)) {
+                    profileMenu.classList.remove('show');
+                }
+            }
+        });
+    </script>
+
+    <main class="container">
         <section class="kelas">
             <h2>Kelas 1</h2>
             <p class="desc">
@@ -398,7 +579,9 @@
             <div class="materi-section">
                 <h3>Presensi</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, magnam. Nam qui sapiente ut illo illum, unde aliquam non dicta accusamus doloremque quos, tempora delectus ratione voluptas pariatur officia temporibus.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, magnam. Nam qui sapiente ut
+                    illo illum, unde aliquam non dicta accusamus doloremque quos, tempora delectus ratione voluptas
+                    pariatur officia temporibus.
                 </p>
                 <br>
                 <h3>Rencana Pembelajaran Semester</h3>
@@ -438,27 +621,35 @@
                         <button class="module-btn mark" onclick="toggleDone(this)">Mark as done</button>
                     </div>
                 </div>
-                            </div>
+            </div>
         </section>
 
-                <section class="kelas-lainnya">
+        <section class="kelas-lainnya">
             <h3>Kelas lainnya</h3>
             <div class="kelas-grid">
-                <div class="card">
-                    <img src="https://picsum.photos/300/200?random=1" alt="Kelas 2" />
-                    <h4>Kelas 2</h4>
-                    <p>Lihat selengkapnya</p>
-                </div>
-                <div class="card">
-                    <img src="https://picsum.photos/300/200?random=2" alt="Kelas 3" />
-                    <h4>Kelas 3</h4>
-                    <p>Lihat selengkapnya</p>
-                </div>
-                <div class="card">
-                    <img src="https://picsum.photos/300/200?random=3" alt="Kelas 4" />
-                    <h4>Kelas 4</h4>
-                    <p>Lihat selengkapnya</p>
-                </div>
+                <a href="TK2.html">
+                    <div class="card">
+                        <img src="https://picsum.photos/300/200?random=1" alt="Kelas 2" />
+                        <h4>Kelas 2</h4>
+                        <p>Lihat selengkapnya</p>
+                    </div>
+                </a>
+
+                <a href="TK3.html">
+                    <div class="card">
+                        <img src="https://picsum.photos/300/200?random=2" alt="Kelas 3" />
+                        <h4>Kelas 3</h4>
+                        <p>Lihat selengkapnya</p>
+                    </div>
+                </a>
+
+                <a href="TK4.html">
+                    <div class="card">
+                        <img src="https://picsum.photos/300/200?random=3" alt="Kelas 4" />
+                        <h4>Kelas 4</h4>
+                        <p>Lihat selengkapnya</p>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
@@ -483,19 +674,20 @@
             </div>
     </footer>
 
-<script>
-function toggleDone(button) {
-    if (button.classList.contains("mark")) {
-        button.classList.remove("mark");
-        button.classList.add("done");
-        button.innerHTML = '<i class="fas fa-check"></i> Done';
-    } else {
-        button.classList.remove("done");
-        button.classList.add("mark");
-        button.innerHTML = 'Mark as done';
-    }
-}
-</script>
+    <script>
+        function toggleDone(button) {
+            if (button.classList.contains("mark")) {
+                button.classList.remove("mark");
+                button.classList.add("done");
+                button.innerHTML = '<i class="fas fa-check"></i> Done';
+            } else {
+                button.classList.remove("done");
+                button.classList.add("mark");
+                button.innerHTML = 'Mark as done';
+            }
+        }
+    </script>
 
 </body>
+
 </html>
