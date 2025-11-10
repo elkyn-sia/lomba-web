@@ -17,18 +17,24 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
         <a href="lp.html">Dashboard</a>
         <a href="mycourse.html">My Courses</a>
-        <a href="kelas/TK1.html">Kelas 1</a>
-        <a href="kelas/TK2.html">Kelas 2</a>
-        <a href="kelas/TK3.html">Kelas 3</a>
-        <a href="kelas/TK4.html">Kelas 4</a>
     </div>
 
     <header class="navbar">
         <div class="menu-btn" onclick="toggleSidebar()">☰</div>
         <h1 class="logo">TeKah</h1>
-        <a href="ep.html" class="nav-profile">
-            <img src="https://picsum.photos/40/40" alt="Profile">
-        </a>
+        <div class="profile-container">
+        
+            <div class="profile-area">
+                <span class="user-name">Nama Anda</span>
+        
+                <img src="https://i.pravatar.cc/40" alt="Foto Profil" class="profile-picture" id="profilePictureButton">
+            </div>
+        
+            <div class="profile-dropdown" id="profileMenu">
+                <a href="ep.html">Edit Profile</a>
+                <div class="divider"></div>
+                <a href="home.html">Logout</a>
+            </div>
     </header>
 
     <div class="container">
@@ -40,7 +46,7 @@
             <h2>Student</h2>
 
             <div class="about">
-                <h3>About Falko</h3>
+                <h3>About Me</h3>
                 <div class="social-icons">
                     <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn"></a>
                     <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt=""></a>
@@ -50,37 +56,58 @@
 
             <div class="facts">
                 <h3>Facts</h3>
-                <p><strong>Terakhir Onlie:</strong> January 1, 2025</p>
+                <p><strong>Terakhir Online:</strong> January 1, 2025</p>
                 <p><strong>Role:</strong> Student</p>
             </div>
         </aside>
 
         <main class="profile-content">
-            <h1>General</h1>
-
+            <h1>Edit Profile</h1>
             <div class="tabs">
-                <button class="active">General</button>
-                <button>Change Password</button>
+                <div class="tab active" data-tab="profile">Edit Profile</div>
+                <div class="tab" data-tab="password">Change Password</div>
             </div>
 
-            <form class="profile-form">
-                <h3>Settings</h3>
-                <label>Email</label>
-                <input type="email" value="student@gmail.com" />
+            <div class="tab-content active" id="profile">
+                <h3>Profile Information</h3>
+                <form>
+                    <label for="nim">NIM</label>
+                    <input type="text" id="nim" placeholder="Enter your NIM">
 
-                <label>Firstname</label>
-                <input type="text" value="Aru" />
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" />
+            
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" />
+            
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" placeholder="Enter your phone number" />
 
-                <label>Lastname</label>
-                <input type="text" value="" />
-
-                <button type="submit" class="save-btn">Save Changes</button>
-            </form>
+                    <label for="birth">Date of Birth</label>
+                    <input type="text" id="birth" placeholder="Enter your birth">
+            
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+            
+            <!-- Change Password -->
+            <div class="tab-content" id="password">
+                <h3>Change Password</h3>
+                <form>
+                    <label for="lastpass">Last Password</label>
+                    <input type="password" id="lastpass" placeholder="Enter last password" />
+            
+                    <label for="newpass">New Password</label>
+                    <input type="password" id="newpass" placeholder="Enter new password" />
+            
+                    <label for="confirmpass">Confirm New Password</label>
+                    <input type="password" id="confirmpass" placeholder="Confirm new password" />
+            
+                    <button type="submit">Change Password</button>
+                </form>
         </main>
     </div>
 
-    
     <script src="script.js"></script>
-    
 </body>
 </html>
