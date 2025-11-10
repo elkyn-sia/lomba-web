@@ -16,18 +16,24 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
         <a href="lp.html">Dashboard</a>
         <a href="mycourse.html">My Courses</a>
-        <a href="kelas/TK1.html">Kelas 1</a>
-        <a href="kelas/TK2.html">Kelas 2</a>
-        <a href="kelas/TK3.html">Kelas 3</a>
-        <a href="kelas/TK4.html">Kelas 4</a>
     </div>
 
     <header class="navbar">
         <div class="menu-btn" onclick="toggleSidebar()">☰</div>
         <h1 class="logo">TeKah</h1>
-        <a href="ep.html" class="nav-profile">
-            <img src="https://picsum.photos/40/40" alt="Profile">
-        </a>
+        <div class="profile-container">
+        
+            <div class="profile-area">
+                <span class="user-name">Student</span>
+        
+                <img src="https://i.pravatar.cc/40" alt="Foto Profil" class="profile-picture" id="profilePictureButton">
+            </div>
+        
+            <div class="profile-dropdown" id="profileMenu">
+                <a href="ep.html">Edit Profile</a>
+                <div class="divider"></div>
+                <a href="home.html">Logout</a>
+            </div>
     </header>
 
     <main>
@@ -103,7 +109,7 @@
                 </div>
                 </a>
 
-                <a href="4">
+                <a href="kelas/TK4.html">
                 <div class="card">
                     <img src="https://picsum.photos/300/200?4" alt="">
                     <h4>Kelas 4</h4>
