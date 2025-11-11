@@ -150,7 +150,7 @@ main {
     padding: 10px;
 }
 .calendar th {
-    background: #f4f4f4;
+    background: #ffffff;
 }
 .calendar td:hover {
     background-color: #f0f0f0;
@@ -200,13 +200,18 @@ main {
     margin: 10px 15px;
     font-size: 16px;
     color: #000000;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .card p {
     margin: 0 15px 15px;
     color: #555;
     font-size: 14px;
 }
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 
 /* -- DARI ep.html (Profile) -- */
@@ -441,7 +446,7 @@ main {
     margin: 0.5rem;
     font-size: 1.1rem;
     color: #000; /* Memastikan warna sama */
-    text-decoration: underline; /* Memastikan konsisten */
+    text-decoration: none; /* Memastikan konsisten */
 }
 
 .kelas-grid .card p {
